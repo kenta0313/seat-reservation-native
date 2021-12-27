@@ -18,14 +18,15 @@ const style = StyleSheet.create({
   button: {
     backgroundColor: basecolor,
     width: 300,
-    height: 50,
+    height: 60,
     borderBottomWidth: 4,
     borderBottomColor: boldcolor
 
   },
   buttontext: {
     color: '#fff',
-    fontSize: 25
+    fontSize: 30,
+    fontWeight: '600'
   }
 });
 

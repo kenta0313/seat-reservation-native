@@ -14,6 +14,10 @@ const style = StyleSheet.create({
   },
   subtitle: {
     fontSize: 40
+  },
+  flex: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
   }
 });
 
@@ -40,11 +44,11 @@ const SlectPage = () => {
     <View style={style.container}>
       <Text style={style.title}>300円<Text style={style.value}>(税込)</Text>/30分</Text>
       <Text style={style.subtitle}>席を選択して下さい</Text>
-      {Seats.map((seat, id) => (
-        <View key={id}>
-          <BaseCard {...seat} />
-        </View>
-      ))}
+      <View style={style.flex}>
+        {Seats.map((seat, id) => (
+          <BaseCard {...seat} key={id}/>
+        ))}
+      </View>
     </View>
   );
 };
