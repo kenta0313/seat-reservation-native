@@ -1,7 +1,7 @@
 import { StyleSheet, Text } from 'react-native';
 import { Button, Card } from 'react-native-paper';
 import { basecolor, boldcolor } from '../constant';
-import { Seats } from '../pages/Home';
+import { Seat } from '../pages/Home';
 
 const style = StyleSheet.create({
   card: {
@@ -30,9 +30,9 @@ const style = StyleSheet.create({
   }
 });
 
-const BaseCard = (seat: Seats) => {
+const BaseCard = (seat: Seat) => {
   return (
-    <Button>
+    <Button onPress={seat.onPress}>
       <Card style={style.card}>
         <Card.Cover
         style={style.cardcover}

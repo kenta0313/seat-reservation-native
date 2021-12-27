@@ -1,5 +1,8 @@
+import { useCallback } from 'react';
 import { StyleSheet, View, Text, ImageSourcePropType } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
 import BaseCard from '../components/BaseCard';
+import { seatSlice } from '../modules/slice/seat';
 
 const style = StyleSheet.create({
   container: {
@@ -21,14 +24,15 @@ const style = StyleSheet.create({
   }
 });
 
-export type SeatsProps = Seats[];
+export type Seats = Seat[];
 
-export type Seats = {
+export type Seat = {
   name: string;
   src: ImageSourcePropType;
+  onPress?: any
 };
 
-const Seats: SeatsProps = [
+const Seats: Seats = [
   {
     name: 'テーブル席',
     src: require('../../public/table.jpg')
@@ -40,13 +44,18 @@ const Seats: SeatsProps = [
 ];
 
 const SlectPage = () => {
+  const dispatch = useDispatch();
+  const { addName } = seatSlice.actions;
+  const handlePress = useCallback((name: Seat['name']) => {
+    dispatch(addName({name: name}));
+  },[]);
   return (
     <View style={style.container}>
       <Text style={style.title}>300円<Text style={style.value}>(税込)</Text>/30分</Text>
       <Text style={style.subtitle}>席を選択して下さい</Text>
       <View style={style.flex}>
         {Seats.map((seat, id) => (
-          <BaseCard {...seat} key={id}/>
+          <BaseCard name={seat.name} src={seat.src} key={id} onPress={() => handlePress(seat.name)} />
         ))}
       </View>
     </View>
