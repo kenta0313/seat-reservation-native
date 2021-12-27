@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, ImageSourcePropType } from 'react-native';
 import BaseCard from '../components/BaseCard';
 
 const style = StyleSheet.create({
@@ -17,14 +17,36 @@ const style = StyleSheet.create({
   }
 });
 
-const HomeScreen = () => {
+export type SeatsProps = Seats[];
+
+export type Seats = {
+  name: string;
+  src: ImageSourcePropType;
+};
+
+const Seats: SeatsProps = [
+  {
+    name: 'テーブル席',
+    src: require('../../public/table.jpg')
+  },
+  {
+    name: '個室席',
+    src: require('../../public/seat_1.jpg')
+  },
+];
+
+const SlectPage = () => {
   return (
     <View style={style.container}>
       <Text style={style.title}>300円<Text style={style.value}>(税込)</Text>/30分</Text>
       <Text style={style.subtitle}>席を選択して下さい</Text>
-      <BaseCard />
+      {Seats.map((seat, id) => (
+        <View key={id}>
+          <BaseCard {...seat} />
+        </View>
+      ))}
     </View>
   );
 };
 
-export default HomeScreen;
+export default SlectPage;
