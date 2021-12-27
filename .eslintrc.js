@@ -5,7 +5,6 @@ module.exports = {
   },
   extends: [
     'plugin:react/recommended',
-    'airbnb',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -26,6 +25,7 @@ module.exports = {
     'no-extra-semi': 'error',
     'no-unexpected-multiline': 'error',
     'no-unreachable': 'error',
+    'react/react-in-jsx-scope': 'off',
     'react/jsx-filename-extension': [1, { extensions: ['.tsx', '.ts'] }],
     'react/style-prop-object': [1, { allow: ['StatusBar'] }],
   },
