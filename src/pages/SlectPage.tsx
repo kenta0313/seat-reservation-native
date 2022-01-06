@@ -1,8 +1,11 @@
+import { useNavigation } from '@react-navigation/native';
 import { useCallback } from 'react';
 import { StyleSheet, View, Text, ImageSourcePropType } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
-import BaseCard from '../components/BaseCard';
+import { useDispatch } from 'react-redux';
 import { seatSlice } from '../modules/slice/seat';
+import BaseCard from '../components/BaseCard';
+import { RootStackParamList } from '../types';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const style = StyleSheet.create({
   container: {
@@ -44,10 +47,12 @@ const Seats: Seats = [
 ];
 
 const SlectPage = () => {
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList, 'TimePage'>>();
   const dispatch = useDispatch();
-  const { addName } = seatSlice.actions;
-  const handlePress = useCallback((name: Seat['name']) => {
-    dispatch(addName({name: name}));
+  const { addSeat } = seatSlice.actions;
+  const handlePress = useCallback((name: Seat['name'], src: Seat['src']) => {
+    dispatch(addSeat({name: name, src: src}));
+    navigation.navigate('TimePage');
   },[]);
   return (
     <View style={style.container}>
@@ -55,7 +60,7 @@ const SlectPage = () => {
       <Text style={style.subtitle}>席を選択して下さい</Text>
       <View style={style.flex}>
         {Seats.map((seat, id) => (
-          <BaseCard name={seat.name} src={seat.src} key={id} onPress={() => handlePress(seat.name)} />
+          <BaseCard name={seat.name} src={seat.src} key={id} onPress={() => handlePress(seat.name, seat.src)} />
         ))}
       </View>
     </View>

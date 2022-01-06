@@ -3,7 +3,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Provider as PaperProvider } from 'react-native-paper';
 import { Provider } from 'react-redux';
 import { store } from './src/modules/store';
-import SlectPage from './src/pages/Home';
+import SlectPage from './src/pages/SlectPage';
+import TimePage from './src/pages/Time';
 
 const Stack = createNativeStackNavigator();
 
@@ -14,6 +15,7 @@ function App() {
         <NavigationContainer>
           <Stack.Navigator>
             <Stack.Screen name="SlectPage" component={SlectPage} />
+            <Stack.Screen name="TimePage" component={TimePage} />
           </Stack.Navigator>
         </NavigationContainer>
       </PaperProvider>

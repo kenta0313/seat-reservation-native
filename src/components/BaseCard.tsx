@@ -1,7 +1,7 @@
 import { StyleSheet, Text } from 'react-native';
 import { Button, Card } from 'react-native-paper';
 import { basecolor, boldcolor } from '../constant';
-import { Seat } from '../pages/Home';
+import { Seat } from '../pages/SlectPage';
 
 const style = StyleSheet.create({
   card: {
