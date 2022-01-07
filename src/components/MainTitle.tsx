@@ -1,6 +1,8 @@
+import { Title } from "react-native-paper";
+
 const MainTitle = (text: string) => {
   return (
-    <h1>{text}</h1>
+    <Title>{text}</Title>
   );
 };
 
