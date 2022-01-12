@@ -3,9 +3,9 @@ import { useCallback } from 'react';
 import { StyleSheet, View, Text, ImageSourcePropType } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { seatSlice } from '../modules/slice/seat';
-import BaseCard from '../components/BaseCard';
 import { RootStackParamList } from '../types';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import BaseCard from '../components/BaseCard';
 
 const style = StyleSheet.create({
   container: {
