@@ -15,8 +15,11 @@ function App() {
       <PaperProvider>
         <NavigationContainer>
           <Stack.Navigator
-          initialRouteName="StoreRegistration"
+            initialRouteName="StoreRegistration"
             screenOptions={{
+              contentStyle: {
+                backgroundColor: '#F0F2F6'
+              },
               headerTitleStyle: {
                 fontSize: 40,
                 fontWeight: 'bold',
